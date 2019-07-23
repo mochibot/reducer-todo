@@ -4,14 +4,14 @@ export const initialState = {
       item: 'Learn about reducers',
       completed: false,
       id: 1563840000000,
-      category: 'Coding',
+      tags: ['CODING', 'SCHOOL'],
       completeBy: '2019-07-23'
     },
     {
       item: 'Overdue task',
       completed: false,
       id: 1563580800000,
-      category: 'Coding',
+      tags: ['TEST'],
       completeBy: '2019-07-22'
     }
   ]
@@ -22,7 +22,7 @@ export const reducer = (state, action) => {
     case 'ADD_TASK': 
       let newTask = {
         item: action.payload.item,
-        category: action.payload.category,
+        tags: action.payload.tags,
         completeBy: action.payload.completeBy,
         completed: false,
         id: Date.now(),

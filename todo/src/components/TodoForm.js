@@ -16,7 +16,11 @@ const TodoForm = (props) => {
   }
 
   const submitHandler = (event) => {
-    props.addTask(event, input)
+    let newTask = {
+      ...input,
+      tags: input.tags.toUpperCase().match(/[A-Z0-9]+/g)
+    }
+    props.addTask(event, newTask)
     setInput('')
   }
 
@@ -33,9 +37,9 @@ const TodoForm = (props) => {
 
   return (
     <div>
-      <Form onSubmit={submitHandler}>
+      <Form onSubmit={submitHandler} style={{'width': '500px', 'margin': '0 auto'}}>
         <Input suffix={<Icon type='carry-out' />} type='text' name='item' placeholder='Task' value={input.item} onChange={inputHandler}/>
-        <Input suffix={<Icon type='unordered-list' />} type='text' name='category' placeholder='Category' value={input.category} onChange={inputHandler}/>
+        <Input suffix={<Icon type='unordered-list' />} type='text' name='tags' placeholder='Category' value={input.tags} onChange={inputHandler}/>
         <DatePicker disabledDate={disabledDate} placeholder='Select due date' onChange={dateHandler}/>
         <Button type='primary' icon='plus-circle' onClick={submitHandler}>Add tasks</Button>
       </Form>

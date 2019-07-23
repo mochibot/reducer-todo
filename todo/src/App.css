@@ -1,3 +1,20 @@
 .App {
   text-align: center;
 }
+
+.App-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  background: rgb(58, 58, 58);
+  color: white;
+  font-size: 20px;
+  padding: 10px 0;
+}
+
+.App-content {
+  margin: 70px auto 0 auto;
+  width: 90%;
+}
