@@ -5,6 +5,7 @@ import { reducer, initialState } from './reducers/reducer';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
 
+import 'antd/dist/antd.css'
 import './App.css';
 
 const App = () => {
@@ -35,8 +36,13 @@ const App = () => {
 
   return (
     <div className="App">
-      <TodoForm addTask={addTask} clearCompleted={clearCompleted}/>
-      <TodoList tasks={tasks} toggleTask={toggleTask}/>
+      <header className='App-header'>
+        My Todo App (v3) 
+      </header>
+      <div className='App-content'>
+        <TodoForm addTask={addTask} clearCompleted={clearCompleted}/>
+        <TodoList tasks={tasks} toggleTask={toggleTask}/>
+      </div>
     </div>
   );
 }

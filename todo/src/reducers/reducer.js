@@ -3,7 +3,16 @@ export const initialState = {
     {
       item: 'Learn about reducers',
       completed: false,
-      id: 3939889
+      id: 1563840000000,
+      category: 'Coding',
+      completeBy: '2019-07-23'
+    },
+    {
+      item: 'Overdue task',
+      completed: false,
+      id: 1563580800000,
+      category: 'Coding',
+      completeBy: '2019-07-22'
     }
   ]
 }
@@ -12,7 +21,9 @@ export const reducer = (state, action) => {
   switch (action.type) {
     case 'ADD_TASK': 
       let newTask = {
-        item: action.payload,
+        item: action.payload.item,
+        category: action.payload.category,
+        completeBy: action.payload.completeBy,
         completed: false,
         id: Date.now(),
       }
