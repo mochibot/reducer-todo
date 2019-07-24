@@ -7,11 +7,15 @@ const Todo = (props) => {
   
   return (
     <List.Item>
-      <Icon style={{ 'fontSize': '30px', 'color': 'black' }} type={props.task.completed ? 'check-square': 'border'} onClick={() => props.toggleTask(props.task.id)} />
-      <Typography.Text style={{ 'fontSize': '18px', 'marginLeft': '10px' }}>{props.task.item}</Typography.Text>
-      {props.task.tags.map(item => <Tag color='geekblue'>{item}</Tag>)}
+      <Icon 
+        style={{'fontSize': '30px', 'color': 'black'}} 
+        type={props.task.completed ? 'check-square': 'border'} 
+        onClick={() => props.toggleTask(props.task.id)} />
+      <Typography.Text 
+        style={{ 'fontSize': '20px', 'marginLeft': '10px', 'textDecoration': `${props.task.completed ? 'line-through' : 'none'}` }}>{props.task.item}</Typography.Text>
       <List.Item.Meta description={`due ${moment(props.task.completeBy).endOf('day').fromNow()}`}/>
-      {(!props.task.completed && moment(curr).isAfter(props.task.completeBy, 'day')) && <Typography.Text style={{'color': 'red'}}>Overdue</Typography.Text>}
+      {props.task.tags.map(item => <Tag color='geekblue' style={{'fontSize': '15px'}}>{item}</Tag>)}
+      {(!props.task.completed && moment(curr).isAfter(props.task.completeBy, 'day')) && <Tag color='red' style={{'fontSize': '15px'}}>OVERDUE</Tag>}
     </List.Item>
   )
 }
